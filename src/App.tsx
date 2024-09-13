@@ -10,12 +10,14 @@ function App() {
       base: `"nav" "main"`,
       lg: `"nav nav" "aside main"`
     }}>
-      <GridItem area={'nav'}><NavBar /></GridItem>
+      <GridItem area={'nav'}>
+        <NavBar />
+      </GridItem>
       {/* only displayed on large screen aside */}
       <Show above='lg'>
-        <GridItem area={'aside'} bg={'gold'}>Aside</GridItem>
+        <GridItem area={'aside'}>Aside</GridItem>
       </Show>
-      <GridItem area={'main'} bg={'dodgerblue'}>Main</GridItem>
+      <GridItem area={'main'}>Main</GridItem>
     </Grid>
   );
 }
