@@ -15,7 +15,7 @@ interface Props {
 const GameGrid = ({ gameQuery }: Props) => {
 
     const { data, error, isLoading } = useGame(gameQuery);
-    const skeletons = [1, 2, 3, 4, 5, 6]
+    const skeletons = Array.from({ length: 35 }, (_, index) => index + 1);
     return (
         <>
             {error && <Text>{error}</Text>}
