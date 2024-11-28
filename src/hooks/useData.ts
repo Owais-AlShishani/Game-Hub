@@ -15,24 +15,24 @@ interface FetchResponse<T> {
 const useData = <T>(endpoint: string, requestConfig?: AxiosRequestConfig, deps?: any[]) => {
 
     const [data, setData] = useState<T[]>([]);
-    const [isLoading, setLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState('');
 
     useEffect(() => {
         const controller = new AbortController();
 
-        setLoading(true);
+        setIsLoading(true);
 
         apiClient
             .get<FetchResponse<T>>(endpoint, { signal: controller.signal, ...requestConfig })
             .then(res => {
                 setData(res.data.results);
-                setLoading(false)
+                setIsLoading(false)
             })
             .catch(err => {
                 if (err instanceof CanceledError) return;
                 setError(err);
-                setLoading(false);
+                setIsLoading(false);
             })
     }, deps ? [...deps] : [])
     return { data, isLoading, error }
